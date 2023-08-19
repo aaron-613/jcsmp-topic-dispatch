@@ -9,4 +9,4 @@
 
 rootProject.name = "solace-java-topic-dispatch"
 include("topic-dispatch-lib")
-include("topic-dispatch-app")
+include("topic-dispatch-example-app")
