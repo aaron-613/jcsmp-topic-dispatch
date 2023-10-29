@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public final class TopicUtil {
 	
 	/**
-	 * <p>This method validates whether a topic subscription used by the MessageListenerWithTopicDispatch
+	 * <p>This method validates whether a topic subscription used by the MessageListenerWithTopicDispatchOld
 	 * class is well-formed.  This does not mean it isn't a valid subscription that would be accepted
 	 * by the Solace broker.  But it does ensure it behave as expected.  That is:</p>
 	 * <ul>
@@ -49,7 +49,7 @@ public final class TopicUtil {
 	
 	/**
 	 * <p><b>NOTE:</b> This regex method is much slower than {@link #validateSub(String)}</p>
-	 * <p>This method validates whether a topic subscription used by the MessageListenerWithTopicDispatch
+	 * <p>This method validates whether a topic subscription used by the MessageListenerWithTopicDispatchOld
 	 * class is well-formed.  This does not mean it isn't a valid subscription that would be accepted
 	 * by the Solace broker.  But it does ensure it behave as expected.  That is:</p>
 	 * <ul>
@@ -81,9 +81,10 @@ public final class TopicUtil {
 
 	
 	/** This assumes you have a valid subscription, i.e. not multiple &gt; for example */
-	public static Pattern buildSubRegexPattern(final String sub, final boolean print) {
+	public static String buildSubRegex(final String sub) {
 		assert validateSub(sub);
-		if (print) System.out.print(sub);
+//		boolean print = false;
+//		if (print) System.out.print(sub);
 		String subRegex = "^\\Q" + sub + "\\E$";  // include start and end, and escape the whole string
 //		if (print) System.out.print(" 1-> " + subRegex);
         
@@ -96,11 +97,14 @@ public final class TopicUtil {
 
 		// get rid of unnecessary open/close quote pairs
 		subRegex = subRegex.replaceAll("\\\\Q\\\\E", "");
-		if (print) System.out.printf(" -> %s%n", subRegex);
-		
-		return Pattern.compile(subRegex);
+//		if (print) System.out.printf(" -> %s%n", subRegex);
+		return subRegex;
 	}
 
+	/** This assumes you have a valid subscription, i.e. not multiple &gt; for example */
+	public static Pattern buildSubRegexPattern(final String sub) {
+		return Pattern.compile(buildSubRegex(sub));
+	}
 
 	public static boolean topicMatchesRegex(String topic, final Pattern sub) {
 		return sub.matcher(topic).matches();

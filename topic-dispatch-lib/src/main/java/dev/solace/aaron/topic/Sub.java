@@ -3,9 +3,11 @@ package dev.solace.aaron.topic;
 public class Sub implements CharSequence {
 	
 	public final String sub;
+	public final String regex;
 
 	/**
-	 * <p>Builds a convenience Solace topic subscription object, can be used for topic dispatch.</p>
+	 * <p>Builds a convenience Solace topic subscription object, can be used for topic dispatch,
+	 * as well as DIY regex pattern matching.</p>
 	 * @param sub a topic subscription, something like <code>a/b/c</code> or <code>a/b/*</code> or <code>a/b/&gt;</code>
 	 * @throws IllegalArgumentException if the subscription is not well-formed. See {@link TopicUtil#validateSub(String)}
 	 */
@@ -14,6 +16,7 @@ public class Sub implements CharSequence {
 		if (!TopicUtil.validateSub(this.sub)) {
 			throw new IllegalArgumentException("Malformed subscription: " + this.sub);
 		}
+		regex = TopicUtil.buildSubRegex(sub);
 	}
 
 	/** Convenience method for {@link TopicUtil#topicMatches(String,String)} */

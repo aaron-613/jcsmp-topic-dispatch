@@ -51,7 +51,7 @@ public class TestDataGeneratorUtil {
 	public static void trimMalformedTopics(Set<String> subs) {
 		for (Iterator<String> it = subs.iterator(); it.hasNext(); ) {
 			String topic = it.next();
-			if (!topic.startsWith("/") && !topic.endsWith("/") && !topic.contains("//")) it.remove();
+			if (topic.startsWith("/") || topic.endsWith("/") || topic.contains("//")) it.remove();
 		}
 	}
 

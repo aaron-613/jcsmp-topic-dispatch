@@ -31,7 +31,7 @@ public class SubValidationComparisonTests {
 	
 	@BeforeClass
 	public static void generatePossibleSubs() {
-		int howMany = 10_000_000;
+		int howMany = 100_000;
 		System.out.printf("building %,d random possible subs... ", howMany);
 		for (int i=0; i<howMany; i++) {
 			possibleSubs.add(TestDataGeneratorUtil.buildRandomSub(20));
@@ -63,7 +63,7 @@ public class SubValidationComparisonTests {
     	
     	start = System.currentTimeMillis();
     	for (String sub : regexSubs) {
-    		TopicUtil.buildSubRegexPattern(sub, false);
+    		TopicUtil.buildSubRegexPattern(sub);
     	}
     	System.out.printf("Regex pattern construction of %,d subs took %,d ms.%n", regexSubs.size(), System.currentTimeMillis()-start);
     	

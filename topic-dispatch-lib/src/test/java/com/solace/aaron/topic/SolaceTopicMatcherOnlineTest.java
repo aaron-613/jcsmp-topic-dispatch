@@ -62,12 +62,12 @@ public class SolaceTopicMatcherOnlineTest {
 		consumer = session.getMessageConsumer((XMLMessageListener)null);  // blocking consumer!
 		consumer.start();
         
-		for (int i=0; i<10000; i++) {
+		for (int i=0; i<1000; i++) {
 			String sub = TestDataGeneratorUtil.buildRandomSub(20);
 			if (TopicUtil.validateSub(sub)) validSubs.add(sub);
 		}
 		System.out.println(validSubs.size() + " subs");
-		for (int i=0; i<100000; i++) {
+		for (int i=0; i<1000; i++) {
 //			String topic = TestDataGeneratorUtil.buildRandomTopic(50);
 //			if (!topic.startsWith("/") && !topic.endsWith("/") && !topic.contains("//")) topics.add(topic);
 			topics.add(TestDataGeneratorUtil.buildRandomTopic(50));

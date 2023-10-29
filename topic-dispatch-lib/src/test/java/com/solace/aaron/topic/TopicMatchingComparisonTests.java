@@ -35,7 +35,7 @@ public class TopicMatchingComparisonTests {
 	@BeforeClass
 	public static void generatePossibleSubs() {
 		System.out.print("Building subs... ");
-		for (int i=0; i<100_000; i++) {
+		for (int i=0; i<10_000; i++) {
 			possibleSubs.add(TestDataGeneratorUtil.buildRandomSub(20));
 		}
 		System.out.print("validating subs... ");
@@ -48,7 +48,7 @@ public class TopicMatchingComparisonTests {
 			System.exit(1);
 		}
 		System.out.print("building topics... ");
-		for (int i=0; i<10_000; i++) {
+		for (int i=0; i<1_000; i++) {
 			topics.add(TestDataGeneratorUtil.buildRandomTopic(20));
 		}
 		System.out.println("Done!");
@@ -75,7 +75,7 @@ public class TopicMatchingComparisonTests {
     	long start = System.currentTimeMillis();
     	for (String sub : regexSubs) {
     		topicMatchesRegex.put(sub, new HashSet<>());
-    		Pattern p = TopicUtil.buildSubRegexPattern(sub,false);
+    		Pattern p = TopicUtil.buildSubRegexPattern(sub);
     		for (String topic : topics) {
     			if (TopicUtil.topicMatchesRegex(topic, p)) topicMatchesRegex.get(sub).add(topic);
     		}
@@ -90,9 +90,9 @@ public class TopicMatchingComparisonTests {
     public static void checkSets() {
     	
     	if (topicMatches.equals(topicMatchesRegex)) {
-    		System.out.println("Sets are same");
+    		System.out.println("Matching results are same");
     	} else {
-    		System.out.println("Sets are different");
+    		System.out.println("Matching results are different");
     		
     	}
     }

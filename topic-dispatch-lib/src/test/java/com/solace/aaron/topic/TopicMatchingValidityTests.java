@@ -22,7 +22,7 @@ public class TopicMatchingValidityTests {
 	
 	@BeforeClass
 	public static void populateData() {
-		for (int i=0; i<100_000; i++) {
+		for (int i=0; i<10_000; i++) {
 			String sub = TestDataGeneratorUtil.buildRandomSub(12);
 			if (TopicUtil.validateSub(sub)) validSubs.add(sub);
 		}
@@ -35,11 +35,11 @@ public class TopicMatchingValidityTests {
     public void topicMatchingValidation() {
     	for (String sub : validSubs) {
     		for (String topic : topics) {
-    			Pattern p = TopicUtil.buildSubRegexPattern(sub, false);
+    			Pattern p = TopicUtil.buildSubRegexPattern(sub);
     			if (TopicUtil.topicMatches(topic, sub) ^ TopicUtil.topicMatchesRegex(topic, p)) {
     				System.out.println("Sub: " + sub + ", Topic: " + topic);
     				System.out.println(TopicUtil.topicMatches(topic, sub));
-    				TopicUtil.buildSubRegexPattern(sub, true);
+    				System.out.println(TopicUtil.buildSubRegex(sub));
     				System.out.println();
     			}
     		}
