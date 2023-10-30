@@ -21,3 +21,6 @@ Explanations on how to use.
 
 Threading issues?
 
+
+
+Interesting internal Slack convo for my Solace colleagues: https://solacedotcom.slack.com/archives/C627M1NKA/p1692385333575059
