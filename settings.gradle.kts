@@ -7,6 +7,6 @@
  * in the user manual at https://docs.gradle.org/6.8.3/userguide/multi_project_builds.html
  */
 
-rootProject.name = "solace-java-topic-dispatch"
+rootProject.name = "jcsmp-topic-dispatch"
 include("topic-dispatch-lib")
 include("topic-dispatch-example-app")
