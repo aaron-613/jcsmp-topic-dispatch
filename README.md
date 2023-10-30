@@ -3,7 +3,8 @@
 A collection of helper classes to perform topic dispatch with JCSMP, which includes utilities to do Solace topic subscription-style matching against topics.
 This was written with Direct messaging in mind, but it should work fine for queues as well `(FlowReceiver.onReceive()`).  
 
-Probably the file to check out is `TopicUtil.java` which has the topic matching logic.  I have implemented a regex-style matching (which is more portable b/c
+Probably the file to check out is [`TopicUtil.java`](https://github.com/aaron-613/jcsmp-topic-dispatch/blob/main/topic-dispatch-lib/src/main/java/dev/solace/aaron/topic/TopicUtil.java)
+which has the topic matching logic.  I have implemented a regex-style matching (which is more portable b/c
 you can just convert your subscription into a regex, and use it elsewhere), or a more performant linear scan algorithm, comparing char-by-char.
 
 My utilities assume a subscription is "well-formed".  That is, wildcard chars `*` and `>` are not used as literals in the subscription, and there are no empty levels
