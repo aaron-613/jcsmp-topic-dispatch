@@ -149,7 +149,7 @@ public class TopicDispatchExample {
 
         System.out.println(API + " " + SAMPLE_NAME + " connected, and running. Press [ENTER] to quit.");
         while (System.in.available() == 0 && !isShutdown) {
-            Thread.sleep(100);  // wait 1 second
+            Thread.sleep(100);  // sleep for 100 ms, waitin to see if shutdown or [ENTER] pressed
         }
         isShutdown = true;
         app.session.closeSession();  // will also close consumer object
