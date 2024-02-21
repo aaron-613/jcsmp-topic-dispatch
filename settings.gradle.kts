@@ -8,5 +8,5 @@
  */
 
 rootProject.name = "jcsmp-topic-dispatch"
-include("topic-dispatch-lib")
-include("topic-dispatch-example-app")
+include("jcsmp-topic-dispatch-lib")
+include("jcsmp-topic-dispatch-example-app")
